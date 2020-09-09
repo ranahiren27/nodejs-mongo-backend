@@ -1,5 +1,3 @@
-import * as express from 'express';
+import * as express from "express";
 
-export default interface IResponse extends express.Response {
-    body: object;
-}
+export default interface IResponse extends express.Response {}

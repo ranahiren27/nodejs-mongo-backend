@@ -1,3 +1,5 @@
 import * as express from "express";
-
-export default interface IRequest extends express.Request {}
+import IUser from "./IUser";
+export default interface IRequest extends express.Request {
+  users?: IUser | IUser[] | any;
+}
