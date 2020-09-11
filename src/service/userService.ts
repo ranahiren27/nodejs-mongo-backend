@@ -83,9 +83,6 @@ export const insertUser: RequestHandler = async (
 };
 
 /**
- * @param sort 1 or -1 default 0
- * @param limit default 5
- * @param skip default 0
  * Read users from database
  */
 export const getAllUsers: RequestHandler = async (
@@ -93,29 +90,29 @@ export const getAllUsers: RequestHandler = async (
   res: IResponse,
   next: NextFunction
 ) => {
-  const params = _.merge(req.body, req.params);
+  // const params = _.merge(req.body, req.params);
 
-  let skip = 0,
-    sort = 0,
-    limit = 5;
+  // let skip = 0,
+  //   sort = 0,
+  //   limit = 5;
 
-  if (!_.isUndefined(params.skip)) {
-    skip = parseInt(params.skip) || 0;
-  }
-  if (!_.isUndefined(params.sort)) {
-    sort = parseInt(params.sort) || 0;
-  }
-  if (!_.isUndefined(params.limit)) {
-    limit = parseInt(params.limit) || 5;
-  }
+  // if (!_.isUndefined(params.skip)) {
+  //   skip = parseInt(params.skip) || 0;
+  // }
+  // if (!_.isUndefined(params.sort)) {
+  //   sort = parseInt(params.sort) || 0;
+  // }
+  // if (!_.isUndefined(params.limit)) {
+  //   limit = parseInt(params.limit) || 5;
+  // }
 
   try {
     const data = UserSchema.find({ isDel: 0 });
 
     data.select("_id FirstName LastName email DOB Bio");
-    data.limit(limit);
-    data.skip(skip);
-    data.sort({ FirstName: sort });
+    // data.limit(limit);
+    // data.skip(skip);
+    // data.sort({ FirstName: sort });
 
     req.users = await data.exec();
 

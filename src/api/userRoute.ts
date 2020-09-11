@@ -25,13 +25,13 @@ user.get("/", [userService.getAllUsers, userController.getUsers]);
  * End Point: URL/v1/user/ Method: Delete
  * Delete user by id
  */
-user.delete("/", [userService.deleteUser, userController.deleteUsers]);
+user.delete("/:id", [userService.deleteUser, userController.deleteUsers]);
 
 /**
  * End Point: URL/v1/user/ Method: Put
  * Update user by id
  */
-user.put("/", [
+user.put("/:id", [
   userService.validateData,
   userService.updateUser,
   userController.updateUsers,
